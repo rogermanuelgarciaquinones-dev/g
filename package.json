@@ -7,6 +7,9 @@
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js"
   },
+  "keywords": ["escuela", "gestion", "nodejs", "express"],
+  "author": "Roger",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

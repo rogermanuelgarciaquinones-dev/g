@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso · Sistema de Gestión Escolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- PANEL IZQUIERDO -->
+    <section class="panel-left">
+      <header class="top-strip">
+        <div class="brand">
+          <span class="brand-mark">GE</span>
+          <div class="brand-info">
+            <strong>Gestión Escolar</strong>
+            <small>Campus Virtual · 2026</small>
+          </div>
+        </div>
+      </header>
+
+      <div class="hero">
+        <span class="eyebrow"><span class="eyebrow-line"></span>Plataforma académica</span>
+        <h1 class="mega-title">
+          APRENDE.<br/>ENSEÑA.<br/><span class="hl">GESTIONA.</span>
+        </h1>
+        <p class="sub-title">
+          Un sistema para conectar estudiantes, docentes y materias con la claridad que tu institución merece.
+        </p>
+      </div>
+
+      <footer class="panel-foot">
+        <div class="foot-cell"><span class="foot-label">Roles</span><span class="foot-value">03</span></div>
+        <div class="foot-cell"><span class="foot-label">Módulos</span><span class="foot-value">06</span></div>
+        <div class="foot-cell"><span class="foot-label">Disponibilidad</span><span class="foot-value">24/7</span></div>
+      </footer>
+    </section>
+
+    <!-- PANEL DERECHO -->
+    <section class="panel-right">
+      <div class="form-header">
+        <span class="form-number">01 / Acceso</span>
+        <span class="form-status"><span class="status-dot"></span> Sistema activo</span>
+      </div>
+
+      <div class="form-body">
+        <h2 class="form-title">Inicia sesión</h2>
+        <p class="form-desc">Selecciona tu rol e ingresa tus credenciales institucionales.</p>
+
+        <div class="role-selector" role="tablist">
+          <button type="button" class="role-tab active" data-role="admin" role="tab">
+            <span class="role-tab-icon">◉</span>
+            <span class="role-tab-text"><strong>Admin</strong><small>Gestión total</small></span>
+          </button>
+          <button type="button" class="role-tab" data-role="profesor" role="tab">
+            <span class="role-tab-icon">▲</span>
+            <span class="role-tab-text"><strong>Profesor</strong><small>Calificaciones</small></span>
+          </button>
+          <button type="button" class="role-tab" data-role="estudiante" role="tab">
+            <span class="role-tab-icon">■</span>
+            <span class="role-tab-text"><strong>Estudiante</strong><small>Mis materias</small></span>
+          </button>
+        </div>
+
+        <form class="form" id="loginForm">
+          <input type="hidden" id="role" name="role" value="admin" />
+
+          <div class="field">
+            <div class="field-label"><label for="email">Correo institucional</label><span class="field-num">01</span></div>
+            <input type="email" id="email" name="email" placeholder="usuario@escuela.com" required />
+          </div>
+
+          <div class="field">
+            <div class="field-label"><label for="password">Contraseña</label><span class="field-num">02</span></div>
+            <div class="input-group">
+              <input type="password" id="password" name="password" placeholder="Mínimo 6 caracteres" required />
+              <button type="button" class="reveal" id="togglePass">VER</button>
+            </div>
+          </div>
+
+          <div class="form-meta">
+            <label class="check">
+              <input type="checkbox" />
+              <span class="check-box"></span>
+              <span class="check-text">Recordarme</span>
+            </label>
+            <a href="#" class="text-link">¿Olvidaste tu contraseña? →</a>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span>Acceder como <span id="roleLabel">Administrador</span></span>
+            <span class="btn-arrow">↗</span>
+          </button>
+        </form>
+
+        <div class="divider"><span>Acceso rápido de prueba</span></div>
+
+        <div class="quick-access">
+          <button type="button" class="quick-btn" data-quick="admin">
+            <span class="quick-dot" style="--c: #ff5a1f;"></span>
+            <span class="quick-info"><strong>Admin</strong><small>admin@escuela.com</small></span>
+          </button>
+          <button type="button" class="quick-btn" data-quick="profesor">
+            <span class="quick-dot" style="--c: #ffe14d;"></span>
+            <span class="quick-info"><strong>Profesor</strong><small>ana@escuela.com</small></span>
+          </button>
+          <button type="button" class="quick-btn" data-quick="estudiante">
+            <span class="quick-dot" style="--c: #f2efe6;"></span>
+            <span class="quick-info"><strong>Estudiante</strong><small>estudiante@escuela.com</small></span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../js/login.js"></script>
+</body>
+</html> 

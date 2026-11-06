@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin · Gestión Escolar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-mark">GE</span>
+      <div class="brand-info">
+        <strong>Gestión Escolar</strong>
+        <small>Admin Panel</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-label">Módulos</span>
+      <button class="nav-item active" data-tab="dashboard">
+        <span class="nav-num">00</span><span class="nav-icon">◉</span><span class="nav-text">Dashboard</span>
+      </button>
+      <button class="nav-item" data-tab="estudiantes">
+        <span class="nav-num">01</span><span class="nav-icon">◇</span><span class="nav-text">Estudiantes</span>
+      </button>
+      <button class="nav-item" data-tab="profesores">
+        <span class="nav-num">02</span><span class="nav-icon">△</span><span class="nav-text">Profesores</span>
+      </button>
+      <button class="nav-item" data-tab="materias">
+        <span class="nav-num">03</span><span class="nav-icon">□</span><span class="nav-text">Materias</span>
+      </button>
+      <button class="nav-item" data-tab="inscripciones">
+        <span class="nav-num">04</span><span class="nav-icon">◇</span><span class="nav-text">Inscripciones</span>
+      </button>
+      <button class="nav-item" data-tab="calificaciones">
+        <span class="nav-num">05</span><span class="nav-icon">✦</span><span class="nav-text">Calificaciones</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <span class="user-avatar" id="userAvatar">A</span>
+        <div class="user-meta">
+          <strong id="userName">Admin</strong>
+          <small id="userEmail">admin@escuela.com</small>
+        </div>
+      </div>
+      <button id="logoutBtn" class="logout-link" title="Cerrar sesión">↗</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">
+        <span class="crumb-muted">Panel</span>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-active" id="crumbActive">Dashboard</span>
+      </div>
+      <div class="topbar-meta">
+        <span class="meta-pill">Sistema activo</span>
+        <span class="meta-clock" id="clock"></span>
+      </div>
+    </header>
+
+    <!-- VISTA: DASHBOARD -->
+    <section class="tab-content active" data-content="dashboard">
+      <div class="page-head">
+        <div>
+          <span class="page-number">00 / Dashboard</span>
+          <h1>Vista general</h1>
+          <p>Resumen de tu institución en tiempo real.</p>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-head"><span class="stat-label">Estudiantes</span><span class="stat-icon">◇</span></div>
+          <div class="stat-value">128</div><div class="stat-trend up">+12 este mes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-head"><span class="stat-label">Profesores</span><span class="stat-icon">△</span></div>
+          <div class="stat-value">18</div><div class="stat-trend">Activos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-head"><span class="stat-label">Materias</span><span class="stat-icon">□</span></div>
+          <div class="stat-value">24</div><div class="stat-trend">6 períodos</div>
+        </div>
+        <div class="stat-card highlight">
+          <div class="stat-head"><span class="stat-label">Inscripciones</span><span class="stat-icon">◇</span></div>
+          <div class="stat-value">432</div><div class="stat-trend up">+8% vs. anterior</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA: ESTUDIANTES -->
+        <!-- VISTA: ESTUDIANTES -->
+    <section class="tab-content" data-content="estudiantes">
+      <div class="page-head">
+        <div>
+          <span class="page-number">01 / Módulo</span>
+          <h1>Estudiantes</h1>
+          <p>Administra los registros académicos de los estudiantes.</p>
+        </div>
+        <button class="btn-primary"><span>+ Nuevo estudiante</span></button>
+      </div>
+      <div class="toolbar">
+        <div class="search-box"><span class="search-icon">⌕</span><input type="search" id="searchEstudiante" placeholder="Buscar por nombre o documento..."/></div>
+        <span class="count-info" id="countEstudiantes">0 registros</span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Nombre</th><th>Documento</th><th>Correo</th><th>Teléfono</th><th>Estado</th>
+              <th class="col-actions">Acciones</th>
+            </tr>
+          </thead>
+          <!-- Aquí se inyectarán los datos con JS -->
+          <tbody id="tablaEstudiantesBody">
+            <tr><td colspan="7" style="text-align:center;">Cargando estudiantes...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+        <!-- VISTA: PROFESORES -->
+    <section class="tab-content" data-content="profesores">
+      <div class="page-head">
+        <div>
+          <span class="page-number">02 / Módulo</span>
+          <h1>Profesores</h1>
+          <p>Gestiona el cuerpo docente.</p>
+        </div>
+        <button class="btn-primary" onclick="abrirModalProfesor()"><span>+ Nuevo profesor</span></button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>ID</th><th>Nombre</th><th>Documento</th><th>Especialidad</th><th>Correo</th><th>Estado</th><th class="col-actions">Acciones</th></tr>
+          </thead>
+          <tbody id="tablaProfesoresBody">
+            <tr><td colspan="7" style="text-align:center;">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- OTRAS VISTAS (Materias, Inscripciones, Calificaciones) -->
+    <section class="tab-content" data-content="materias">
+      <div class="page-head"><div><span class="page-number">03 / Módulo</span><h1>Materias</h1><p>Oferta académica.</p></div></div>
+      <div style="padding: 40px; border: 1px dashed var(--line); text-align: center; color: var(--text-muted);">Aquí irá el CRUD de materias.</div>
+    </section>
+    <section class="tab-content" data-content="inscripciones">
+      <div class="page-head"><div><span class="page-number">04 / Módulo</span><h1>Inscripciones</h1><p>Asigna estudiantes a materias.</p></div></div>
+      <div style="padding: 40px; border: 1px dashed var(--line); text-align: center; color: var(--text-muted);">Aquí irá el CRUD de inscripciones.</div>
+    </section>
+    <section class="tab-content" data-content="calificaciones">
+      <div class="page-head"><div><span class="page-number">05 / Módulo</span><h1>Calificaciones</h1><p>Notas de los estudiantes.</p></div></div>
+      <div style="padding: 40px; border: 1px dashed var(--line); text-align: center; color: var(--text-muted);">Aquí irá el CRUD de calificaciones.</div>
+    </section>
+
+   <!-- MODAL PARA CREAR/EDITAR ESTUDIANTE -->
+  <div id="modalEstudiante" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitulo">Nuevo Estudiante</h2>
+        <button id="btnCerrarModal" class="icon-btn danger">✕</button>
+      </div>
+      
+      <form id="formEstudiante">
+        <input type="hidden" id="editId" /> <!-- Guarda el ID si estamos editando -->
+        
+        <div class="field">
+          <label>Nombre completo *</label>
+          <input type="text" id="newNombre" required placeholder="Ej. Laura Pérez">
+        </div>
+        
+        <div class="field">
+          <label>Correo institucional *</label>
+          <input type="email" id="newEmail" required placeholder="usuario@escuela.com">
+        </div>
+        
+        <div class="field">
+          <label>Documento de identidad *</label>
+          <input type="text" id="newDocumento" required placeholder="Ej. 10203040">
+        </div>
+        
+        <div class="field">
+          <label>Teléfono</label>
+          <input type="text" id="newTelefono" placeholder="Opcional">
+        </div>
+
+        <!-- Selector de estado (solo visible al editar) -->
+        <div class="field" id="estadoField" style="display: none;">
+          <label>Estado</label>
+          <select id="newEstado" style="padding: 12px; background: var(--graphite); border: 1px solid var(--line); color: var(--text);">
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="btnCancelarModal" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary" id="btnGuardar">Guardar Estudiante</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+    <!-- MODAL DE PROFESORES -->
+  <div id="modalProfesor" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTituloProfesor">Nuevo Profesor</h2>
+        <button onclick="cerrarModalProfesor()" class="icon-btn danger">✕</button>
+      </div>
+      <form id="formProfesor">
+        <input type="hidden" id="editIdProf" />
+        <div class="field"><label>Nombre Completo</label><input type="text" id="profNombre" required></div>
+        <div class="field"><label>Correo</label><input type="email" id="profEmail" required></div>
+        <div class="field"><label>Documento</label><input type="text" id="profDocumento" required></div>
+        <div class="field"><label>Especialidad</label><input type="text" id="profEspecialidad" required></div>
+        <div class="field"><label>Teléfono</label><input type="text" id="profTelefono"></div>
+        <div class="field" id="profEstadoField" style="display: none;">
+          <label>Estado</label>
+          <select id="profEstado" style="padding: 12px; background: var(--graphite); border: 1px solid var(--line); color: var(--text);">
+            <option value="activo">Activo</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" onclick="cerrarModalProfesor()" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary" id="btnGuardarProf">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  </main>
+
+  
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>
